@@ -1,6 +1,5 @@
-import sys
-import requests
-import json
+import sys, requests, traceback, json
+
 
 def retrieve(event, handler):
 
@@ -15,7 +14,8 @@ def retrieve(event, handler):
         faves = getFaves(duration, token)
         bangers = faves['items']
         for banger in bangers:
-            selects.append(banger['name'] + ' by ' + banger['artists'][0]['name'])
+            print(banger)
+            selects.append(banger['name'] + ' between ' + banger['artists'][0]['name'])
         print(selects)
 
 
@@ -23,19 +23,21 @@ def retrieve(event, handler):
         return {
             "statusCode": 200,
             "headers": {
-                "Access-Control-Allow-Origin": '*' ,
+                "Access-Control-Allow-Origin": 'http://elitespotifystats.s3-website-us-west-1.amazonaws.com' ,
                 "Access-Control-Allow-Headers": "*"
             },
             "body": json.dumps(selects)
         }
     except:
+        print("Something broken")
+        traceback.print_exc(file=sys.stdout)
         return {
             "statusCode": 500,
             "headers": {
-                "Access-Control-Allow-Origin": '*' ,
+                "Access-Control-Allow-Origin": 'http://elitespotifystats.s3-website-us-west-1.amazonaws.com' ,
                 "Access-Control-Allow-Headers": "*"
             },
-            "body": "Ya tresh"
+            "body": "Ethan is trash and this is broken :( "
         }
     
 

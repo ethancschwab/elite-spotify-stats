@@ -5,34 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Profile</title>
 
-    <!-- load CSS -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
-    <!-- Google web font "Open Sans" -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- https://getbootstrap.com/ -->
-    <link rel="stylesheet" href="css/templatemo-style.css">
-    <!-- Templatemo style -->
+    <!-- load CSS --> 
+    <link rel="stylesheet" href="css/style_gang.css">
+
 
 </head>
 <font size="12">your top fifty selects during the last six months</font>
-<!-- <button onclick="window.location.href = 'recent.html';">Recent</button>
-<br><br>
-<font size="12">your top fifty selects all time</font>
-<button onclick="window.location.href = 'forever.html';">Long Term</button> -->
 
+<div id="short_term"> </div>
+<script src="curl.js" id="request" duration="short_term"></script>
 
-
-
-<div id="medium_term"></div>
-<script src="curl.js" id="request" duration="medium_term"></script>  
-
-
+<div id="split_output">
+	<table style="width:75%" id="selects">
+	<tr>
+		<th> Name </th>
+		<th> Artist </th>
+	</tr>
+</div>
 <br><br><br>
-<audio controls>
-  <source src="media/moon.mp3" type="audio/mpeg">
-Your browser does not support the audio element.
-</audio>
-<br>Moon - Kid Francescoli
+
+
+
 
 </body>
 

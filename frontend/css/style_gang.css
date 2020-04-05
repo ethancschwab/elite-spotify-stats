@@ -1,0 +1,17 @@
+body {
+	background-color: #33AE81;
+}
+
+table {
+  	border: 5px solid black;
+}
+
+td {
+	border: 1px solid black;
+	text-align: center;
+}
+
+th {
+	border: 2px solid black;
+	text-align: center;
+}
