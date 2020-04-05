@@ -1,1 +1,5 @@
 Elite spotify stats!
+
+
+
+![Architecture]
