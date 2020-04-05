@@ -8,15 +8,17 @@ def retrieve(event, handler):
     x = event['body']
     tokens = event['body'].split("=")
     token = tokens[1]
+    print(tokens)
     print('token: ' + token)
     
 
-    terms = { 'long_term' : 'all time' }
+    terms = { 'short_term' : 'all time' }
     # {'short_term' : 'the last four weeks' ,       'medium_term' : 'the last six months',  'long_term' : 'all time'}
             
     selects = []
     for term in terms.keys():
         faves = getFaves(term, token)
+        #print(faves)
         bangers = faves['items']
         print("Top " + str(len(bangers)) + " of " + terms[term])
         for banger in bangers:
@@ -58,3 +60,12 @@ def getFaves(duration, token):
     response = requests.get('https://api.spotify.com/v1/me/top/tracks', headers=headers, params=params)
     
     return response.json()
+
+
+
+
+
+
+
+
+

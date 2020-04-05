@@ -1,20 +1,37 @@
 <!doctype html>
-<html class="no-js" lang="">
 <head>
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Wild Rydes</title>
-
+<!-- 
   <link rel="stylesheet" href="css/font.css">
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/main.css"> -->
 
 </head>
-<body>
+<body style="background-color: blue">
+<!-- 	<input type="submit" value="Go to my link location" 
+    	onclick="window.location='https://accounts.spotify.com/authorize?client_id=b6b924054a4c403ab859933cb2c98828&redirect_uri=localhost:8000&response_type=token';" /> 
+ -->
+	<input type="submit" value="LOGIN TO YOUR ACCOUNT" 
+onclick="window.location='https://accounts.spotify.com/authorize?client_id=b6b924054a4c403ab859933cb2c98828&redirect_uri=http:%2F%2Felitespotifystats.s3-website-us-west-1.amazonaws.com&scope=user-top-read&response_type=token';" /> 
+
+
+
+<br><br><br>
+
+<div id="output"></div>
+
+<br><br><br>
+
+<img src='media/kirby.gif' width="100"><img src='media/kirby.gif' width="100"><img src='media/kirby.gif' width="100"><img src='media/kirby.gif' width="100"><img src='media/kirby.gif' width="100"><img src='media/kirby.gif' width="100"><img src='media/kirby.gif' width="100"><img src='media/kirby.gif' width="100"><img src='media/kirby.gif' width="100"><img src='media/kirby.gif' width="100">
+
   <script type="text/javascript">
-document.cookie = "test_cookie=sup";
-console.log(document.cookie);</script>
-  <script type="text/javascript">console.log("hey")</script>
+
+	document.cookie = "test_cookie=sup;";
+	//document.body.innerHTML = document.cookie;
+  	console.log(document.cookie);
+  </script>
   <script src="curl.js"></script>
 
 </body>
