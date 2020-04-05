@@ -3,51 +3,42 @@ import requests
 import json
 
 def retrieve(event, handler):
-    #playlist = getPlaylist()
-    #tracklist = playlist['tracks']['items']
-    x = event['body']
-    tokens = event['body'].split("=")
-    token = tokens[1]
-    print(tokens)
-    print('token: ' + token)
-    
 
-    terms = { 'short_term' : 'all time' }
-    # {'short_term' : 'the last four weeks' ,       'medium_term' : 'the last six months',  'long_term' : 'all time'}
-            
-    selects = []
-    for term in terms.keys():
-        faves = getFaves(term, token)
-        #print(faves)
+    try:
+        token = event['body'].split("&")[0].split("=")[1]
+        duration=event['body'].split("&")[1].split("=")[1]
+        print('token: ' + token)
+        print('duration: ' + duration)
+        
+               
+        selects = []
+        faves = getFaves(duration, token)
         bangers = faves['items']
-        print("Top " + str(len(bangers)) + " of " + terms[term])
         for banger in bangers:
             selects.append(banger['name'] + ' by ' + banger['artists'][0]['name'])
         print(selects)
-#        selects = []
 
 
 
-    return {
-        "statusCode": 200,
-        "headers": {
-            "Access-Control-Allow-Origin": '*' ,
-            "Access-Control-Allow-Headers": "*"
-        },
-        "body": json.dumps(selects)
-    }
+        return {
+            "statusCode": 200,
+            "headers": {
+                "Access-Control-Allow-Origin": '*' ,
+                "Access-Control-Allow-Headers": "*"
+            },
+            "body": json.dumps(selects)
+        }
+    except:
+        return {
+            "statusCode": 500,
+            "headers": {
+                "Access-Control-Allow-Origin": '*' ,
+                "Access-Control-Allow-Headers": "*"
+            },
+            "body": "Ya tresh"
+        }
     
 
-
-def getPlaylist():
-    headers = {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer BQAKFUUCqrRLi6IkonzVjF4YLt3MSdgwuopmIJ1b5b369sGKWAmOTA4ut8aGAaZceGJ3FIGwvPBUyuH4ZykKxGijsWbQAc_b3ruOIoI6gOmhg8uzsP4BxBKYidGS370CIlklAbuj5c7HujN4bMYM5x4Q5w',
-    }   
-    response = requests.get('https://api.spotify.com/v1/playlists/5lLnJnb3LkaYxxsYc2ZpVS', headers=headers)
-
-    return response.json()
     
 def getFaves(duration, token):
     auth_string = 'Bearer ' + token
