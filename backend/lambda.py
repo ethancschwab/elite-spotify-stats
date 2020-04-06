@@ -14,8 +14,8 @@ def retrieve(event, handler):
         faves = getFaves(duration, token)
         bangers = faves['items']
         for banger in bangers:
-            print(banger)
-            selects.append(banger['name'] + ' between ' + banger['artists'][0]['name'])
+            str_select = banger['name'].replace(",","") + ' between ' + banger['artists'][0]['name'].replace(",","") + ' between ' + banger['external_urls']['spotify'] + ' between ' + banger['album']['images'][2]['url']
+            selects.append(str_select)
         print(selects)
 
 
