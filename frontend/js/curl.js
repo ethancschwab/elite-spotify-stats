@@ -20,10 +20,10 @@ Http.send(body_final);
 function do_it_to_em(item, index){
 	var item_split = item.split("between")
 	var name = item_split[0].substr(2);
+	if(name.length > 20){name = name.substr(0,35)}
 	var artist = item_split[1].slice(0, -1);
 	var link = item_split[2].slice(0,-1);
 	var cover = item_split[3].slice(0,-1);
-	console.log("cover link: " + cover)
 	var table = document.getElementById("selects")
 	var row = table.insertRow()
 	var insert_name = row.insertCell(0)
@@ -36,8 +36,8 @@ function do_it_to_em(item, index){
 
 Http.onreadystatechange=(e)=>{	
 	if(Http.readyState == 4){
-		var output=Http.responseText.substr(1,(Http.responseText.length-2));
-		console.log(output);
+		document.getElementById("split_output").innerHTML = "<table style='width:85%' id='selects' align='center'><tr><th>Name</th><th>Artist</th><th>Album</th></tr>"
+		var output=Http.responseText.substr(0,(Http.responseText.length-1));
 		var output_list = output.split(",");
 		output_list.forEach(do_it_to_em);
 		document.getElementById("split_output").innerHTML += "</table>"

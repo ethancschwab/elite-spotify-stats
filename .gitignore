@@ -1,4 +1,17 @@
 .DS_STORE
 deploy.sh
-
+backend/favorites.zip
+backend/playlist.zip
+backend/favorites/bin*
+backend/favorites/certifi*
+backend/favorites/chardet*
+backend/favorites/idna*
+backend/favorites/requests*
+backend/favorites/url*
+backend/create_playlist/bin*
+backend/create_playlist/certifi*
+backend/create_playlist/chardet*
+backend/create_playlist/idna*
+backend/create_playlist/requests*
+backend/create_playlist/url*
 

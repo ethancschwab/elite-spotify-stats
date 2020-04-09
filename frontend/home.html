@@ -4,30 +4,33 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Elite Elite Elite</title>
-
-	<link rel="stylesheet" href="css/style_gang.css">
+  <!-- Google web font "Open Sans" -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+  <link rel="stylesheet" href="css/style_gang.css">
 
 
 </head>
 
-<ul>
-  <li><a href="">Home</a></li>
-  <li><a href="">Contact</a></li>
-  <li><a href="">About</a></li>
-</ul>
 
-<button onclick="window.location.href = 'user_feed.html';">Click Here</button>
-<body style="background-color: blue">
+
 
 	<input type="submit" value="LOGIN TO YOUR ACCOUNT" 
-onclick="window.location='https://accounts.spotify.com/authorize?client_id=b6b924054a4c403ab859933cb2c98828&redirect_uri=http:%2F%2Felitespotifystats.s3-website-us-west-1.amazonaws.com%2Flogin_redirect.html&scope=user-top-read&response_type=token';" /> 
+onclick="window.location='https://accounts.spotify.com/authorize?client_id=b6b924054a4c403ab859933cb2c98828&redirect_uri=http:%2F%2Felitespotifystats.s3-website-us-west-1.amazonaws.com%2Flogin_redirect.html&scope=user-top-read%20user-read-email%20user-read-private%20playlist-modify-public%20playlist-modify-private&response_type=token';" /> 
 
 
+<!-- <script src="js/create_playlist.js" id="playlist"></script> -->
+<br><br>
+<img src='media/kirby.gif' width="300">
+<br><br>
 
+<font size="6">
+	Welcome to Elite Spotify Stats! 
+</font>
 
-<img src='media/kirby.gif' width="100">
+<br><br>
+<font size="3">
+	This site uses the <a href='https://developer.spotify.com/documentation/web-api/'> Spotify Web API </a> to fetch your most listened to songs and artists over different periods
+</font>
 
-
-</body>
 
 </html>
