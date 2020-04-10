@@ -36,6 +36,7 @@ function do_it_to_em(item, index){
 
 Http.onreadystatechange=(e)=>{	
 	if(Http.readyState == 4){
+		console.log(Http.responseText)
 		document.getElementById("split_output").innerHTML = "<table style='width:85%' id='selects' align='center'><tr><th>Name</th><th>Artist</th><th>Album</th></tr>"
 		var output=Http.responseText.substr(0,(Http.responseText.length-1));
 		var output_list = output.split(",");

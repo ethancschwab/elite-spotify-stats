@@ -6,13 +6,19 @@ def lambda_handler(event, context):
 	user_id = get_user_id(token)['id']
 
 	descriptions = {
-		"short_term" : "Most played tracks during the last four weeks",
-		"medium_term" : "Most played tracks during the last six months",
-		"long_term" : "Most played tracks all time "
+		"short_term" : "most played tracks during the last four weeks",
+		"medium_term" : "most played tracks during the last six months",
+		"long_term" : "most played tracks all time"
+	}
+	names = {
+		"short_term" : "monthly favorites",
+		"medium_term" : "semiannual selects",
+		"long_term" : "goat tracks"
 	}
 	description = descriptions[duration]
+	name = names[duration]
 
-	create_response = create_playlist(token,user_id,description)
+	create_response = create_playlist(token,user_id,name,description)
 	playlist_id = create_response['id']
 	playlist_link = create_response['external_urls']['spotify']
 	faves = get_faves(duration, token)
@@ -50,7 +56,7 @@ def get_user_id(token):
 	response = requests.get(url, headers=headers)
 	return response.json()
 
-def create_playlist(token, user_id, description):
+def create_playlist(token, user_id, name, description):
 	auth_string = 'Bearer ' + token
 	url = 'https://api.spotify.com/v1/users/'+user_id +'/playlists'
 	headers = {
@@ -58,7 +64,7 @@ def create_playlist(token, user_id, description):
 		'Authorization' : auth_string,
 		'Content-Type' : 'application/json',
 	}
-	body="{\"name\":\"favorite trax\", \"public\":false, \"description\": \"" + description + "\" }"
+	body="{\"name\":\"" + name + "\", \"public\":false, \"description\": \"" + description + "\" }"
 	response = requests.post(url, headers=headers, data=body)
 	return response.json()
 

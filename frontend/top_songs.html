@@ -1,0 +1,49 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Goat Selects</title>
+  <!-- load CSS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
+  <!-- Google web font "Open Sans" -->
+  <link rel="stylesheet" href="css/style_gang.css">
+
+
+</head>
+
+<div class="topnav">
+  <a href="menu.html">Back to Main</a>
+</div>
+<br><br>
+
+<script>
+  var duration = window.location.href.split("?")[1]
+  var script = document.createElement("script");
+  script.src = "js/curl.js"
+  script.setAttribute("duration" , duration)
+  script.setAttribute("id", "request")
+  document.head.appendChild(script);
+</script>
+
+<font size="6">Your Most Listened To Last Six Months</font><br><br>
+
+<button onclick="window.location.href = 'create_playlist.html?medium_term';">
+	Click Here to Create a Playlist
+
+</button>
+<br><br><br>
+
+<div id="split_output">
+
+Loading your most played &#128519; 
+<br><br><img src='media/kirby.gif' width="200"><br>
+
+
+<div id="load"> </div>
+<!-- <script src="js/curl.js" id="request" duration="medium_term"></script>
+ -->
+
+
+</div>
+</html>

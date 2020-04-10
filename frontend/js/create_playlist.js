@@ -16,10 +16,10 @@ var image_section = document.getElementById("image_section")
 request.onreadystatechange=(e)=>{
 	if(request.readyState == 4){
 		response = request.responseText.substr(0,(request.responseText.length-1))
-		var link = response.split("&&&")[0].substring(1)
+		var link = response.split("&&&")[0].substr(1)
 		var image = response.split("&&&")[1]
 		console.log("link to list " + link)
 		console.log("link to image " + image)
-		image_section.innerHTML = "click the image below for your new mix :) <br><br><a href='"+link+"'><img src=" + image +"><br><br>"
+		image_section.innerHTML = "click below for your new mix gang <br><br><a href='"+link+"'><img src=" + image +"><br><br><a href='" + link + "'>favorite trax</a>"
 	}
 }
