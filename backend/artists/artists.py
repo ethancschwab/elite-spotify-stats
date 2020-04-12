@@ -15,7 +15,7 @@ def retrieve(event, handler):
         artists = faves['items']
         print(artists)
         for artist in artists:
-            favorite_artists.append(artist['name'].replace(",","") + "&&&" + artist['images'][2]['url'])
+            favorite_artists.append(artist['name'].replace(",","") + "&&&" + artist['images'][2]['url']+ "&&&" + artist['external_urls']['spotify'])
             
         
 

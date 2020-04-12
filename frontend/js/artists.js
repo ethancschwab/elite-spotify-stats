@@ -25,7 +25,7 @@ Http.onreadystatechange=(e)=>{
 			document.getElementById("split_output").innerHTML = "Your session may have expired - please go <a href='home.html'> to the home page </a> and try logging in again"
 		} else {
 			document.getElementById("split_output").innerHTML = "<div class=\"row\">"
-			var output = Http.responseText.substr(1,(Http.responseText.length-1))
+			var output = Http.responseText.substr(0,(Http.responseText.length-1))
 			output_list = output.split(",")
 			output_list.forEach(do_it_to_em)
 			document.getElementById("split_output").innerHTML += "</div>"
@@ -37,9 +37,10 @@ function do_it_to_em(item, index){
 	if(count == 0){
 		document.getElementById("split_output").innerHTML += "<div class=\"column\">"
 	}
-	var name = item.split("&&&")[0].substr(1)
+	var name = item.split("&&&")[0].substr(2)
 	var img = item.split("&&&")[1]
-	document.getElementById("split_output").innerHTML += "<div class=\"container\"><img width=\"200\" src=\"" + img + "\"><div class=\"bottom-left\">Bottom Left</div></div>"
+	var link = item.split("&&&")[2]
+	document.getElementById("split_output").innerHTML += "<a href=\"" + link + "\"><img width=\"200\" src=\"" + img + "\"></a>" + name 
 	count += 1
 	if(count == 3){
 		document.getElementById("split_output").innerHTML += "</div>"

@@ -38,7 +38,7 @@ Http.onreadystatechange=(e)=>{
 function do_it_to_em(item, index){
 	var item_split = item.split("between")
 	var name = item_split[0].substr(2);
-	if(name.length > 20){name = name.substr(0,35)}
+	if(name.length > 20){name = name.substr(0,30)}
 	var artist = item_split[1].slice(0, -1);
 	var link = item_split[2].slice(0,-1);
 	var cover = item_split[3].slice(0,-1);
