@@ -56,7 +56,9 @@ def get_user_id(token):
 	response = requests.get(url, headers=headers)
 	return response.json()
 
+
 def create_playlist(token, user_id, name, description):
+
 	auth_string = 'Bearer ' + token
 	url = 'https://api.spotify.com/v1/users/'+user_id +'/playlists'
 	headers = {
@@ -64,7 +66,9 @@ def create_playlist(token, user_id, name, description):
 		'Authorization' : auth_string,
 		'Content-Type' : 'application/json',
 	}
+
 	body="{\"name\":\"" + name + "\", \"public\":false, \"description\": \"" + description + "\" }"
+
 	response = requests.post(url, headers=headers, data=body)
 	return response.json()
 

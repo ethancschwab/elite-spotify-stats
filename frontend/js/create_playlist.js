@@ -20,5 +20,6 @@ request.onreadystatechange=(e)=>{
 		var link = response.split("&&&")[0].substr(1)
 		var image = response.split("&&&")[1]
 		image_section.innerHTML = "click below for your new mix gang <br><br><a href='"+link+"'><img src=" + image +"><br><br><a href='" + link + "'>favorite trax</a>"
+
 	}
 }
