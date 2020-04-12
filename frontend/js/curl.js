@@ -17,6 +17,24 @@ var count=0;
 Http.send(body_final);
 
 
+
+
+Http.onreadystatechange=(e)=>{	
+	if(Http.readyState == 4){
+		if (Http.status == 500){
+			document.getElementById("split_output").innerHTML = "Your session may have expired - please go <a href='home.html'> to the home page </a> and try logging in again"
+		} else {
+			document.getElementById("split_output").innerHTML = "<table style='width:85%' id='selects' align='center'><tr><th>Name</th><th>Artist</th><th>Album</th></tr>"
+			var output=Http.responseText.substr(0,(Http.responseText.length-1));
+			var output_list = output.split(",");
+			output_list.forEach(do_it_to_em);
+			document.getElementById("split_output").innerHTML += "</table>"
+		}
+
+	}
+}
+
+// Parse Each Record and Populate Table Row
 function do_it_to_em(item, index){
 	var item_split = item.split("between")
 	var name = item_split[0].substr(2);
@@ -33,18 +51,6 @@ function do_it_to_em(item, index){
 	insert_artist.innerHTML = artist
 	insert_cover.innerHTML="<img src='" + cover + "'></img>";
 }
-
-Http.onreadystatechange=(e)=>{	
-	if(Http.readyState == 4){
-		console.log(Http.responseText)
-		document.getElementById("split_output").innerHTML = "<table style='width:85%' id='selects' align='center'><tr><th>Name</th><th>Artist</th><th>Album</th></tr>"
-		var output=Http.responseText.substr(0,(Http.responseText.length-1));
-		var output_list = output.split(",");
-		output_list.forEach(do_it_to_em);
-		document.getElementById("split_output").innerHTML += "</table>"
-	}
-}
-
 
 
 Http.onerror=(e)=>{

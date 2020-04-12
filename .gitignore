@@ -2,6 +2,7 @@
 deploy.sh
 backend/favorites.zip
 backend/playlist.zip
+backend/artists.zip
 backend/favorites/bin*
 backend/favorites/certifi*
 backend/favorites/chardet*
@@ -14,4 +15,9 @@ backend/create_playlist/chardet*
 backend/create_playlist/idna*
 backend/create_playlist/requests*
 backend/create_playlist/url*
-
+backend/artists/bin*
+backend/artists/certifi*
+backend/artists/chardet*
+backend/artists/idna*
+backend/artists/requests*
+backend/artists/url*
