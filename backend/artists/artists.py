@@ -25,7 +25,7 @@ def retrieve(event, handler):
                 "Access-Control-Allow-Origin": 'http://elitespotifystats.s3-website-us-west-1.amazonaws.com' ,
                 "Access-Control-Allow-Headers": "*"
             },
-            "body": json.dumps(favorite_artists)
+            "body": json.dumps(favorite_artists, ensure_ascii=False)
         }
     except:
         print("Something broken")

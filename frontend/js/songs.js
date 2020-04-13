@@ -4,6 +4,7 @@ var duration = document.getElementById("request").getAttribute("duration")
 
 
 Http.open("POST", api_url,true);
+//Http.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
 // Fetch access token from cookie and duration from params
 var token = document.cookie.split("=")[1]
@@ -22,9 +23,9 @@ Http.send(body_final);
 Http.onreadystatechange=(e)=>{	
 	if(Http.readyState == 4){
 		if (Http.status == 500){
-			document.getElementById("split_output").innerHTML = "Your session may have expired - please go <a href='home.html'> to the home page </a> and try logging in again"
+			document.getElementById("split_output").innerHTML = "your session has expired - please go <a href='home.html'>to the home page</a> and try logging in again"
 		} else {
-			document.getElementById("split_output").innerHTML = "<table style='width:85%' id='selects' align='center'><tr><th>Name</th><th>Artist</th><th>Album</th></tr>"
+			document.getElementById("split_output").innerHTML = "<table style='width:90%' id='selects' align='center'><tr><th>Name</th><th>Artist</th><th>Album</th></tr>"
 			var output=Http.responseText.substr(0,(Http.responseText.length-1));
 			var output_list = output.split(",");
 			output_list.forEach(do_it_to_em);
@@ -38,7 +39,6 @@ Http.onreadystatechange=(e)=>{
 function do_it_to_em(item, index){
 	var item_split = item.split("between")
 	var name = item_split[0].substr(2);
-	if(name.length > 20){name = name.substr(0,30)}
 	var artist = item_split[1].slice(0, -1);
 	var link = item_split[2].slice(0,-1);
 	var cover = item_split[3].slice(0,-1);
@@ -47,9 +47,9 @@ function do_it_to_em(item, index){
 	var insert_name = row.insertCell(0)
 	var insert_artist = row.insertCell(1)
 	var insert_cover = row.insertCell(2)
-	insert_name.innerHTML = "<a href='" + link + "'> " + name + "</a>";
+	insert_name.innerHTML = "<a href='" + link + "'> " + decodeURI(name) + "</a>";
 	insert_artist.innerHTML = artist
-	insert_cover.innerHTML="<img src='" + cover + "'></img>";
+	insert_cover.innerHTML="<img src='" + cover + "'>";
 }
 
 

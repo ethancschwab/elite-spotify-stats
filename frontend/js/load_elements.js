@@ -1,6 +1,4 @@
 // Disorganized and low quality script to populate page elements
-
-
 var duration = window.location.href.split("?")[1]
 var type = window.location.href.split("?")[0].split("/")[3]
 var title1 = ""
@@ -13,28 +11,27 @@ script.setAttribute("id", "request")
 
 
 
-
 if (duration == "short_term"){
-  title2 = "Last Four Weeks"
+  title2 = "last four weeks"
 }else if(duration == "medium_term"){
-  title2 = "Last Six Months"
+  title2 = "last six months"
 }else if(duration == "long_term"){
-  title2 = "All Time"
+  title2 = "all time"
 }else {
-  title2 = " Invalid Duration :( "
+  title2 = " invalid duration :( "
 }
 
 if(type == "top_songs.html"){
-  title1 = " Tracks "
-  src = 'js/curl.js'
+  title1 = " tracks "
+  src = 'js/songs.js'
   var button = document.createElement("button")
   button.setAttribute("onclick", "window.location.href='create_playlist.html?short_term'")
   button_location = document.getElementById("playlist_button")
-  button_string = "<button onclick=\"window.location.href='create_playlist.html?" + duration + "';\">Click Here to Create a Playlist</button>"
+  button_string = "<button onclick=\"window.location.href='create_playlist.html?" + duration + "';\">click to generate playlist</button>"
   button_location.innerHTML = button_string
   document.head.appendChild(button);  
 }else if(type == "top_artists.html"){
-  title1 = " Artists "
+  title1 = " artists "
   src = 'js/artists.js'
 }else{
   title1 = " Invalid Type :( "
@@ -44,7 +41,7 @@ if(type == "top_songs.html"){
 script.src = src
 document.head.appendChild(script);
 var title_section= document.getElementById("title")
-title_section.innerHTML = "<font size='6'> Your Most Listened to " + title1 + title2 + "</font><br><br>"
+title_section.innerHTML = "<font size='6'> your most listened to " + title1 + title2 + "</font><br><br>"
 
 
 

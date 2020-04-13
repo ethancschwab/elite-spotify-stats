@@ -18,17 +18,15 @@ Http.send(body_final);
 
 
 
-
 Http.onreadystatechange=(e)=>{	
 	if(Http.readyState == 4){
 		if (Http.status == 500){
-			document.getElementById("split_output").innerHTML = "Your session may have expired - please go <a href='home.html'> to the home page </a> and try logging in again"
+			document.getElementById("split_output").innerHTML = "your session has expired - please go <a href='home.html'>to the home page</a> and try logging in again"
 		} else {
-			document.getElementById("split_output").innerHTML = "<div class=\"row\">"
+			document.getElementById("split_output").innerHTML = "<table style='width:90%' id='artists' align='center'><tr><th>Artist</th><th>Picture</th></tr>"
 			var output = Http.responseText.substr(0,(Http.responseText.length-1))
 			output_list = output.split(",")
 			output_list.forEach(do_it_to_em)
-			document.getElementById("split_output").innerHTML += "</div>"
 		}
 	}
 }
@@ -39,13 +37,15 @@ function do_it_to_em(item, index){
 	}
 	var name = item.split("&&&")[0].substr(2)
 	var img = item.split("&&&")[1]
-	var link = item.split("&&&")[2]
-	document.getElementById("split_output").innerHTML += "<a href=\"" + link + "\"><img width=\"200\" src=\"" + img + "\"></a>" + name 
-	count += 1
-	if(count == 3){
-		document.getElementById("split_output").innerHTML += "</div>"
-		count = 0
-	}
+	var link = item.split("&&&")[2] 
+	var table = document.getElementById("artists")
+	var row = table.insertRow()
+	var insert_name = row.insertCell(0)
+	var insert_img = row.insertCell(1)
+	insert_name.innerHTML = "<a href=\"" + link + "\">" + name + "</a>"
+	insert_img.innerHTML = "<img height=\"100\" src=\"" + img + "\">"
+
+
 }
 
 

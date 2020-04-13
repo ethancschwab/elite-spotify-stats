@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Profile</title>
+  <title>Elite Spotify Stats</title>
   <!-- load CSS -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400">
   <!-- Google web font "Open Sans" -->
@@ -12,38 +12,41 @@
 
 
 <!-- <font size="12">your top fifty selects during the last six months</font> -->
-<font size="5">Your Most Listened to Tracks</font><br><br>
+<font size="5">your most listened to tracks</font><br><br>
 
 
 <button onclick="window.location.href = 'top_songs.html?short_term';">
-  Last Four Weeks
-</button><br><br><br>
+  last four weeks
+</button><br><br>
 <button onclick="window.location.href = 'top_songs.html?medium_term';">
-  Last Six Months
-</button><br><br><br>
+  last six months
+</button><br><br>
 <button onclick="window.location.href = 'top_songs.html?long_term';">
-   Spotify Career
+   spotify career
 </button>
 
 
 <br><br><br>
-<font size="5">Your Most Listened to Artists</font><br><br>
+<font size="5">your most listened to artists</font><br><br>
 
 
 <button onclick="window.location.href = 'top_artists.html?short_term';">
-  Last Four Weeks
-</button><br><br><br>
+  last four weeks
+</button><br><br>
 <button onclick="window.location.href = 'top_artists.html?medium_term';">
-  Last Six Months
-</button><br><br><br>
+  last six months
+</button><br><br>
 <button onclick="window.location.href = 'top_artists.html?long_term';">
-   Spotify Career
+   spotify career
 </button>
-
 <br><br>
-<button onclick="window.location.href = 'about.html';">
-   About
-</button>
+
+<a href="home.html" id="logout2" onclick="logout(); return true;">logout</a><br><br>
+<a href="about.html"> about </a>
+
+<script src="js/logout.js"></script>
+
+
 </body>
 
 </html>

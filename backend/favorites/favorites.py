@@ -6,8 +6,6 @@ def retrieve(event, handler):
     try:
         token = event['body'].split("&")[0].split("=")[1]
         duration=event['body'].split("&")[1].split("=")[1]
-        print('token: ' + token)
-        print('duration: ' + duration)
         
                
         selects = []
@@ -16,7 +14,7 @@ def retrieve(event, handler):
         for banger in bangers:
             str_select = banger['name'].replace(",","") + ' between ' + banger['artists'][0]['name'].replace(",","") + ' between ' + banger['external_urls']['spotify'] + ' between ' + banger['album']['images'][2]['url']
             selects.append(str_select)
-        print(selects)
+        print(json.dumps(selects))
 
 
 
@@ -24,9 +22,10 @@ def retrieve(event, handler):
             "statusCode": 200,
             "headers": {
                 "Access-Control-Allow-Origin": 'http://elitespotifystats.s3-website-us-west-1.amazonaws.com' ,
-                "Access-Control-Allow-Headers": "*"
+                "Access-Control-Allow-Headers": "*",
+                "Content-Type": "application/json"
             },
-            "body": json.dumps(selects)
+            "body": json.dumps(selects, ensure_ascii=False)
         }
     except:
         print("Something broken")

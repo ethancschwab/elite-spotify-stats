@@ -13,13 +13,15 @@ request.send(token_final);
 
 var image_section = document.getElementById("image_section")
 
+
+
 request.onreadystatechange=(e)=>{
 	if(request.readyState == 4){
 		console.log(request.responseText)
 		response = request.responseText.substr(0,(request.responseText.length-1))
 		var link = response.split("&&&")[0].substr(1)
 		var image = response.split("&&&")[1]
-		image_section.innerHTML = "click below for your new mix gang <br><br><a href='"+link+"'><img src=" + image +"><br><br><a href='" + link + "'>favorite trax</a>"
+		image_section.innerHTML = "your playlist is complete <br><br><a href='"+link+"'><img border=\"2\"src=" + image +"><br><br><a href='" + link + "'>top played mix</a>"
 
 	}
 }
