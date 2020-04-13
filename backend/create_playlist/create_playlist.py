@@ -11,7 +11,7 @@ def lambda_handler(event, context):
 		"long_term" : "most played tracks all time"
 	}
 	names = {
-		"short_term" : "bangers that have yet to stand the test of time",
+		"short_term" : "fresh ",
 		"medium_term" : "semiannual selects",
 		"long_term" : "goat tracks"
 	}
