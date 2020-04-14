@@ -1,48 +1,60 @@
 import sys, requests, traceback, json
 
 def lambda_handler(event, context):
-	token = event['body'].split("&")[0].split("=")[1]
-	duration = event['body'].split("&")[1].split("=")[1]
-	user_id = get_user_id(token)['id']
+	try:
+		token = event['body'].split("&")[0].split("=")[1]
+		duration = event['body'].split("&")[1].split("=")[1]
+		user_id = get_user_id(token)['id']
 
-	descriptions = {
-		"short_term" : "most played tracks during the last four weeks",
-		"medium_term" : "most played tracks during the last six months",
-		"long_term" : "most played tracks all time"
-	}
-	names = {
-		"short_term" : "fresh ",
-		"medium_term" : "semiannual selects",
-		"long_term" : "goat tracks"
-	}
-	description = descriptions[duration]
-	name = names[duration]
+		descriptions = {
+			"short_term" : "most played tracks during the last four weeks",
+			"medium_term" : "most played tracks during the last six months",
+			"long_term" : "most played tracks all time"
+		}
+		names = {
+			"short_term" : "beloved bangas",
+			"medium_term" : "semiannual selects",
+			"long_term" : "goat tracks"
+		}
+		description = descriptions[duration]
+		name = names[duration]
 
-	create_response = create_playlist(token,user_id,name,description)
-	playlist_id = create_response['id']
-	playlist_link = create_response['external_urls']['spotify']
-	faves = get_faves(duration, token)
+		create_response = create_playlist(token,user_id,name,description)
+		playlist_id = create_response['id']
+		playlist_link = create_response['external_urls']['spotify']
+		faves = get_faves(duration, token)
 
-	uris='/tracks?uris='
-	for key in faves['items']:
-		uri=key['uri']
-		uri=uri.replace(":","%3A")
-		uris += uri + "%2C"
+		uris='/tracks?uris='
+		for key in faves['items']:
+			uri=key['uri']
+			uri=uri.replace(":","%3A")
+			uris += uri + "%2C"
 
-	# Remove last comma ;)
-	uris=uris[:-3]
+		# Remove last comma ;)
+		uris=uris[:-3]
 
-	response = add_to_playlist(playlist_id, uris, token)
-	playlist_info = get_playlist_info(playlist_id, token)
-	image_url=playlist_info['images'][1]['url']
-	return {
-        'statusCode': 200,
-        "headers": {
-            "Access-Control-Allow-Origin": 'http://elitespotifystats.s3-website-us-west-1.amazonaws.com' ,
-            "Access-Control-Allow-Headers": "*"
-        },
-        'body': json.dumps(playlist_link+"&&&"+image_url)
-    }
+		response = add_to_playlist(playlist_id, uris, token)
+		playlist_info = get_playlist_info(playlist_id, token)
+		image_url=playlist_info['images'][1]['url']
+		return {
+	        'statusCode': 200,
+	        "headers": {
+	            "Access-Control-Allow-Origin": 'http://elitespotifystats.s3-website-us-west-1.amazonaws.com' ,
+	            "Access-Control-Allow-Headers": "*"
+	        },
+	        'body': json.dumps(playlist_link+"&&&"+image_url)
+	    }
+	except:
+		print("Something broken")
+		traceback.print_exc(file=sys.stdout)
+		return {
+            "statusCode": 500,
+            "headers": {
+                "Access-Control-Allow-Origin": 'http://elitespotifystats.s3-website-us-west-1.amazonaws.com' ,
+                "Access-Control-Allow-Headers": "*"
+            },
+            "body": "Ethan is trash and this is broken :( "
+        }
 
 
 def get_user_id(token):
