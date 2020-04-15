@@ -6,8 +6,6 @@ def retrieve(event, handler):
     try:
         token = event['body'].split("&")[0].split("=")[1]
         duration=event['body'].split("&")[1].split("=")[1]
-        print('token: ' + token)
-        print('duration: ' + duration)
         
                
         favorite_artists = []
